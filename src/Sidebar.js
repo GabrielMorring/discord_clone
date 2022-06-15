@@ -55,7 +55,7 @@ function Sidebar() {
   return (
     <div className="sidebar">
       <div className="sidebar__top">
-        <h3>Clever Programmer</h3>
+        <h3>Discord</h3>
         <ExpandMoreIcon />
       </div>
       <div className="sidebar__channels">
@@ -90,7 +90,11 @@ function Sidebar() {
         </div>
       </div>
       <div className="sidebar__profile">
-        <Avatar onClick={() => auth.signOut()} src={user.photo} />
+        <Avatar
+          className="sidebar__profileAvatar"
+          onClick={() => auth.signOut()}
+          src={user.photo}
+        />
         <div className="sidebar__profileInfo">
           <h3>{user.displayName}</h3>
           <p>#{user.uid.substring(0, 5)}</p>

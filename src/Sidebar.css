@@ -86,3 +86,14 @@
 .sidebar__profileIcons > .MuiSvgIcon-root {
   padding: 10px;
 }
+
+.sidebar__channels {
+  overflow-y: scroll;
+}
+.sidebar__channels::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar__profileAvatar:hover {
+  cursor: pointer;
+}

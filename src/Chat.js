@@ -12,7 +12,14 @@ import { useSelector } from "react-redux";
 import { selectUser } from "./features/userSlice";
 import { selectChannelId, selectChannelName } from "./features/appSlice";
 import db from "./firebase";
-import { onSnapshot, collection, doc, addDoc } from "firebase/firestore";
+import {
+  onSnapshot,
+  collection,
+  doc,
+  addDoc,
+  query,
+  orderBy,
+} from "firebase/firestore";
 import { serverTimestamp } from "firebase/firestore";
 
 function Chat() {
@@ -25,7 +32,10 @@ function Chat() {
   useEffect(() => {
     if (channelId) {
       onSnapshot(
-        collection(doc(db, "channels", channelId), "messages"),
+        query(
+          collection(doc(db, "channels", channelId), "messages"),
+          orderBy("timestamp")
+        ),
         (snapshot) => setMessages(snapshot.docs.map((doc) => doc.data()))
       );
     }
